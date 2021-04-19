@@ -1,4 +1,4 @@
-* {
+ * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -18,16 +18,9 @@
     align-items: center;
     font-size: 60px;
     margin-bottom: 0;
-  }
+  } 
 
-  .hole {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .score {
+   .score {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,4 +44,25 @@
     width: 100px;
     border-radius: 20px;
     display: block;
+  }
+  .grid {
+    width: 606px;
+    height: 606px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+  
+  .square {
+    height: 200px;
+    width: 200px;
+    border: solid black 1px;
+    background-image: url("dirt.jpg");
+    background-size: cover;
+    justify-content: end;
+  }
+  
+  .mole {
+    background-image: url("mole.jpg");
+    background-size: cover;
   }
