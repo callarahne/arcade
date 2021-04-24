@@ -49,24 +49,34 @@ let hitPosition
 let currentTime = 60
 let timerId = null
 
-$('.timer').text(`${DURATION}`);
+// $('.timer').text(`${DURATION}`);
 
-$(`.start-game`).click(()=>{
-  startGame();
-})
+// $(`.start-game`).click(()=>{
+//   startGame();
+// })
+// const startGame = () => {
+//   pauseGame = false;
+//   $(`.overlay`).removeClass('active');
 
-$('.mole').click(function() {
-  if ($(this).hasClass('active')) {
-    score++
-  }
-  $(this).removeClass('active');
-  $('.score').text(Number(score))
-});
+// }
+
+// $('.mole').click(function() {
+//   if ($(this).hasClass('active')) {
+//     score++
+//   }
+//   $(this).removeClass('active');
+//   $('.score').text(Number(score))
+// });
 function randomSquare() {
   squares.forEach(square => {
     square.classList.remove('mole')
   })
 
+  let randomSquare = squares[Math.floor(Math.random() * 9)]
+  randomSquare.classList.add('mole')
+
+  hitPosition = randomSquare.id
+}
 
 squares.forEach(square => {
   square.addEventListener('mousedown', () => {
@@ -77,13 +87,23 @@ squares.forEach(square => {
     }
   })
 })
+
 function moveMole() {
-  timerId = setInterval(randomSquare, 500)
+  timerId = setInterval(randomSquare, 700)
 }
-if (currentTime == 0) {
-  clearInterval(countDownTimerId)
-  clearInterval(timerId)
-  alert('GAME OVER! Your final score is ' + result)
+
+moveMole()
+
+function countDown() {
+ currentTime--
+ timeLeft.textContent = currentTime
+
+ if (currentTime == 0) {
+   clearInterval(countDownTimerId)
+   clearInterval(timerId)
+   alert('GAME OVER! Final Score' + result)
+ }
+
 }
+
 let countDownTimerId = setInterval(countDown, 1000)
-}
